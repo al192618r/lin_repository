@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fgi.idao.ConvergeMapper">
+<resultMap id="hashmappermap" type="java.util.HashMap"></resultMap>
+  <select id="getOrgname" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetDepartList(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+  <select id="getCategory" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetCategory(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+  <select id="getUnit" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetUnit(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_min,jdbcType=INTEGER,mode=IN}, 	 
+ 	 #{p_max,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+  <select id="getAjaxStatic" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetLastStatistic(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+  <select id="getDetailUnit" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetDetailUnit(
+ 	 #{p_orgname,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+
+  <select id="getOrgMenu" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetOrgMenu(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_orgid,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_min,jdbcType=INTEGER,mode=IN}, 	 
+ 	 #{p_max,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+  <select id="getDetailDepart" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetDetailDepart(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_matterid,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_min,jdbcType=INTEGER,mode=IN}, 	 
+ 	 #{p_max,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+   <select id="getStatistic" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetStatistic(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_min,jdbcType=INTEGER,mode=IN}, 	 
+ 	 #{p_max,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+  
+  <select id="getDetailCategory" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_converge.PRO_GetDetailCategory(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_min,jdbcType=INTEGER,mode=IN}, 	 
+ 	 #{p_max,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=com.fgi.idao.ConvergeMapper.hashmappermap}
+ 	 )}
+   ]]>
+  </select>
+</mapper>

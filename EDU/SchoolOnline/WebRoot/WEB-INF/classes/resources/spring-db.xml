@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd   
+                         http://www.springframework.org/schema/aop 
+                         http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                         http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring  
+                         http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+    <!-- 自动扫描   用在com.fgi.af.test-->  
+    <context:component-scan base-package="com.fgi.axis,com.fgi.controller,com.fgi.dao,com.fgi.idao,com.fgi.service" />  
+<!--     <bean id="dynamicBeanReader" class="com.fd.springApplication.DynamicBeanReaderImpl" init-method="init">   -->
+          
+<!-- </bean>   -->
+    <!-- 引入配置文件 -->  
+    <bean id="propertyConfigurer"  
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="location" value="classpath:resources/jdbc.properties" />  
+    </bean>  
+  
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  
+        destroy-method="close">  
+        <property name="driverClassName" value="${driver}" />  
+        <property name="url" value="${url}" />  
+        <property name="username" value="${username}" />  
+        <property name="password" value="${password}" />  
+        <!-- 初始化连接大小 -->  
+        <property name="initialSize" value="${initialSize}"></property>  
+        <!-- 连接池最大数量 -->  
+        <property name="maxActive" value="${maxActive}"></property>  
+        <!-- 连接池最大空闲 -->  
+        <property name="maxIdle" value="${maxIdle}"></property>  
+        <!-- 连接池最小空闲 -->  
+        <property name="minIdle" value="${minIdle}"></property>  
+        <!-- 获取连接最大等待时间 -->  
+        <property name="maxWait" value="${maxWait}"></property>  
+    </bean>  
+  <bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource"  
+        destroy-method="close">  
+        <property name="driverClassName" value="${driver1}" />  
+        <property name="url" value="${url1}" />  
+        <property name="username" value="${username1}" />  
+        <property name="password" value="${password1}" />  
+        <!-- 初始化连接大小 -->  
+        <property name="initialSize" value="${initialSize1}"></property>  
+        <!-- 连接池最大数量 -->  
+        <property name="maxActive" value="${maxActive1}"></property>  
+        <!-- 连接池最大空闲 -->  
+        <property name="maxIdle" value="${maxIdle1}"></property>  
+        <!-- 连接池最小空闲 -->  
+        <property name="minIdle" value="${minIdle1}"></property>  
+        <!-- 获取连接最大等待时间 -->  
+        <property name="maxWait" value="${maxWait1}"></property>  
+    </bean>  
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <!-- 自动扫描mapping.xml文件 -->  
+        <property name="mapperLocations" value="classpath:resources/mapper/Mapper_*.xml"></property>  
+    </bean>  
+   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> 
+	<property name="dataSource"> 
+ 	<ref local="dataSource1" /> 
+ 	</property>
+   </bean> 
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.fgi.idao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>  
+    <!-- 
+     <bean id = "actorJdbcTemplateDao"   
+         class = "com.logcd.bo.dao.impl.ActorJdbcTemplateDaoImpl">   
+         <property name="jdbcTemplate" ref="jdbcTemplate"/>   
+    </bean>  
+    -->
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->  
+    <bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+    <aop:aspectj-autoproxy />    
+    
+    <!--  
+  <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+  <property name="maxTotal" value="50" />
+  <property name="maxIdle" value="10" />
+  <property name="maxWaitMillis" value="1000" />
+  <property name="testOnBorrow" value="true" />
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+  <constructor-arg index="0" ref="jedisPoolConfig" />
+  <constructor-arg index="1" value="127.0.0.1" />
+  <constructor-arg index="2" value="6379" />
+    </bean>
+    -->
+
+    
+    
+    <!-- 引入properties配置文件 
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+               <value>classpath:properties/*.properties</value>
+               
+            </list>
+        </property>
+    </bean>
+ -->  
+    <!-- jedis 配置 
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig" >
+          <property name="maxIdle" value="${redis.maxIdle}" />
+          <property name="maxWaitMillis" value="${redis.maxWait}" />
+          <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+    </bean >
+ -->
+    <!-- redis服务器中心 
+    <bean id="connectionFactory"  class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >
+          <property name="poolConfig" ref="poolConfig" />
+          <property name="port" value="${redis.port}" />
+          <property name="hostName" value="${redis.host}" />
+          <property name="password" value="${redis.password}" /> 
+          <property name="timeout" value="${redis.timeout}" ></property>
+    </bean >
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >
+          <property name="connectionFactory" ref="connectionFactory" />
+          <property name="keySerializer" >
+              <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+          </property>
+          <property name="valueSerializer" >
+              <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+          </property>
+    </bean >
+     <bean id="redisTestService" class="com.luo.service.impl.RedisTestServiceImpl">
+    </bean>
+ -->
+ 
+   <!-- 重连策略 
+    <bean id="retryPolicy" class="org.apache.curator.retry.ExponentialBackoffRetry">
+        间隔时间基数 
+        <constructor-arg index="0" value="1000" />
+        重连策略 
+        <constructor-arg index="1" value="3" />
+    </bean>
+-->
+ <!--
+    <bean id="curatorFramework" class="org.apache.curator.framework.CuratorFrameworkFactory" factory-method="newClient" init-method="start">
+        <constructor-arg index="0" value="server1:port,server2:port,server3:port" />
+        sessionTimeoutMs会话超时时间，单位为毫秒。默认是60000ms  
+        <constructor-arg index="1" value="5000" />
+        connectionTimeoutMs连接创建超时时间，单位毫秒，默认15000ms 
+        <constructor-arg index="2" value="3000" />
+        <constructor-arg index="3" ref="retryPolicy" />
+    </bean>
+    -->
+    <!--应用场景一：查看当前Client是不是主机
+    <bean id="adShowLeader" class="com.chinaso.common.zookeeper.leader.LeaderDispatch" scope="singleton" init-method="init">
+        <constructor-arg index="0" ref="curatorFramework" />
+        <constructor-arg index="1" value="${sas.zookeeper.leader}" />
+    </bean>
+    -->
+    <!--应用场景一：监控并同步所有Client的数据
+    <bean id="publishAdFlush" class="com.chinaso.modules.ad.job.PublishAdFlush" scope="singleton" init-method="init">
+        <constructor-arg index="0" ref="curatorFramework" />
+        <constructor-arg index="1" value="${sas.zookeeper.publish}" />
+    </bean>
+    -->
+    
+  
+    <!-- 编写spring 配置文件的配置多数源映射关系
+    <bean id="dataSource" class="com.wy.config.DynamicDataSource">  
+        <property name="targetDataSources">  
+            <map key-type="java.lang.String">  
+                <entry key="ORCL" value-ref="orclDataSource"></entry>  
+                <entry key="ISC" value-ref="iscDataSource"></entry>  
+            </map>  
+        </property>  
+        <property name="defaultTargetDataSource" ref="orclDataSource">  
+        </property>  
+   </bean>  
+    -->  
+</beans>  

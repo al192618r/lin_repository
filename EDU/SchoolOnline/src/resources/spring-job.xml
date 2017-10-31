@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd   
+                         http://www.springframework.org/schema/aop 
+                         http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+                          http://www.springframework.org/schema/task
+        				http://www.springframework.org/schema/task/spring-task-3.1.xsd
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+    <!-- 自动扫描 -->  
+   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>  
+    <!-- 引入配置文件 -->  
+    <bean id="propertyConfigurer"  
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="location" value="classpath*:jdbc.properties" />  
+    </bean>  
+  
+       <!-- 定时器开关-->
+    <task:annotation-driven />
+<!--     <context:component-scan base-package="com.fd.job" />   -->
+    <!-- 管理的Bean 
+    <bean id="appJob" class="com.fd.job.Quartz" />
+    <task:scheduled-tasks scheduler="task">
+    -->
+        <!--每三秒执行一次  -->
+         <!--
+        <task:scheduled ref="appJob" method="myTest"
+            cron="0/1 * * * * ?" />
+    </task:scheduled-tasks>
+    <task:scheduler id="task" pool-size="10" />
+    -->
+    <!--
+      <bean id="myPrintDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="myPrintSchedule" />
+    <property name="targetMethod" value="printSomething" />
+    <property name="concurrent" value="false" />
+  </bean>
+  -->
+  <!--配置调度执行的触发的时间-->
+  <!--
+  <bean id="myPrintTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <property name="jobDetail" ref="myPrintDetail" />
+    <property name="cronExpression">
+             
+      <value>0 0 8 * * ?</value>
+    </property>
+  </bean>
+  -->
+  <!-- quartz的调度工厂 调度工厂只能有一个，多个调度任务在list中添加 
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+         
+        <ref local="myPrintTrigger" />
+      </list>
+    </property>
+  </bean>
+   -->
+</beans>  

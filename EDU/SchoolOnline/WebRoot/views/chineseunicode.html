@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var decToHex = function(str) {
+	    return str.replace(/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g,function(newStr){
+            return "\\u" + newStr.charCodeAt(0).toString(16); 
+　　　　　　}); 
+	}
+	
+	var hexToDec = function(str) {
+	    str=str.replace(/\\/g,"%");
+	    return unescape(str);
+	}
+	
+	var encode=function()
+	{
+		document.getElementById('b').value=decToHex(document.getElementById('a').value);
+	}
+	
+	var decode=function()
+	{
+		document.getElementById('b').value=hexToDec(document.getElementById('a').value);
+	}
+</script>
+</head>
+<body>
+	<textarea id="a" rows="10" width="100%"></textarea>
+	<input type="button" onclick="encode()" value="编码" />
+	<input type="button" onclick="decode()" value="解码" />
+	<textarea id="b" rows="10" width="100%"></textarea>
+</body>
+</html>

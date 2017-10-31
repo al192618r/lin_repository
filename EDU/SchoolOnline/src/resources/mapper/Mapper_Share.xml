@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fgi.idao.ShareMapper">
+
+  <resultMap id="sharemap1" type="java.util.HashMap"></resultMap>
+  <resultMap id="sharemap2" type="java.util.HashMap"></resultMap>
+  <!-- 获取被共享部门排行top5 -->
+  <select id="GetSharedOrgTop5" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetSharedOrgTop5(
+ 	 #{p_out1,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1},
+ 	 #{p_out2,jdbcType=CURSOR,mode=OUT,resultMap=sharemap2}
+ 	 )}
+   ]]>
+  </select>
+  <!-- 获取共享部门排行top5 -->
+  <select id="GetSharingOrgTop5" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetSharingOrgTop5(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select>
+  <!-- 获取共享信息排行top5 -->
+  <select id="GetSharingInfoTop5" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetSharingInfoTop5(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select>
+  <!-- 获取被共享部门排行详情 -->
+  <select id="GetSharedOrgDetail" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetSharedOrgDetail(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+	 #{p_pagenum,jdbcType=INTEGER,mode=IN},
+	 #{p_pagesize,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select>
+  <!-- 获取共享部门排行详情 -->
+  <select id="GetSharingOrgDetail" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetSharingOrgDetail(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+	 #{p_pagenum,jdbcType=INTEGER,mode=IN},
+	 #{p_pagesize,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select>    
+  <!-- 获取共享信息排行详情 -->
+  <select id="GetSharingInfoDetail" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetSharingInfoDetail(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+	 #{p_pagenum,jdbcType=INTEGER,mode=IN},
+	 #{p_pagesize,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select> 
+  <!-- 获取数据共享最后6条 -->
+  <select id="GetDataSharingLast6" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetDataSharingLast6(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select> 
+  <!-- 获取数据共享详情 -->
+  <select id="GetDataSharingDetail" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetDataSharingDetail(
+ 	 #{p_search,jdbcType=VARCHAR,mode=IN},
+	 #{p_pagenum,jdbcType=INTEGER,mode=IN},
+	 #{p_pagesize,jdbcType=INTEGER,mode=IN},
+ 	 #{p_count,jdbcType=INTEGER,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select> 
+  <!-- 获取地市目录 -->
+  <select id="GetCity" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetCity(
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select> 
+  <!-- 根据ID获取事项表名中文映射 -->
+  <select id="GetMatterCNameById" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetMatterCNameById(
+ 	 #{p_id,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_tablename,jdbcType=VARCHAR,mode=OUT},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select> 
+  <!-- 根据接口ID获取事项表名中文映射 -->
+  <select id="GetMatterCNameByIFId" parameterType="java.util.HashMap" statementType="CALLABLE">
+     <![CDATA[  
+ 	 {call hb_shareoper.PRO_GetMatterCNameByIFId(
+ 	 #{p_interfaceid,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_columntype,jdbcType=VARCHAR,mode=IN},
+ 	 #{p_out,jdbcType=CURSOR,mode=OUT,resultMap=sharemap1}
+ 	 )}
+   ]]>
+  </select> 
+</mapper>

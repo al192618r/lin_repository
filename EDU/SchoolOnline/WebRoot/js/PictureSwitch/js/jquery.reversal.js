@@ -1,0 +1,35 @@
+﻿$(function () {
+    var aLi = $('#brand .bd-box li');
+    var aImg = $('#brand .bd-box li img');
+    var aSpan = $('#brand .bd-box li span');
+    aLi.each(function (index) {
+        $(this).mouseover(function () {
+            aSpan.eq(index).stop();
+            aImg.eq(index).stop();
+            aImg.eq(index).css({ zIndex: 1 }).animate({
+                top: 37,
+                height: 0
+            }, 50, '', function () {
+                $(this).hide();
+                aSpan.eq(index).show().css({ zIndex: 2 }).animate({
+                    top: 0,
+                    height: 165
+                }, 50)
+            })
+        })
+        $(this).mouseout(function () {
+            aSpan.eq(index).stop();
+            aImg.eq(index).stop();
+            aSpan.eq(index).css({ zIndex: 1 }).animate({
+                top: 37,
+                height: 0
+            }, 50, '', function () {
+                $(this).hide();
+                aImg.eq(index).show().css({ zIndex: 2 }).animate({
+                    top: 0,
+                    height: 165
+                }, 50)
+            })
+        })
+    })
+})

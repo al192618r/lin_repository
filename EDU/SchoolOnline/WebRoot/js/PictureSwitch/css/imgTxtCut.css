@@ -1,0 +1,30 @@
+.clearfix:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix {zoom:1;} 
+/* ---------------------- demo style start  ---------------------- */
+/* img-txt-flaser */
+.img-txt-flaser li{width:250px;height:188px;border:1px solid #E9CDF3;overflow:hidden;float:left;margin:10px 10px 0 0;display:inline;position:relative}
+.img-txt-flaser li h3{font-size:12px;line-height:18px;padding:0 6px}
+.img-txt-flaser li p{padding:0 6px;color:#999999;font-size:12px;}
+.img-txt-flaser li h3 a:link,.img-txt-flaser li h3 a:visited{color:#F50C43;text-decoration:none}
+.img-txt-flaser li h3 a:hover{color:#F50C43;text-decoration:none}
+.img-txt-flaser li p a:link,.img-txt-flaser li p a:visited{color:#999999;text-decoration:none}
+.img-txt-flaser li p a:hover{color:#999999;text-decoration:none}
+/* img-txt-scrool */
+.img-txt-scrool li{width:250px;height:188px;border:1px solid #E9CDF3;overflow:hidden;float:left;margin:10px 10px 0 0;display:inline;position:relative}
+.img-txt-scrool li .scrool-box{position:absolute;}
+.img-txt-scrool li h3{font-size:12px;line-height:18px;padding:0 6px}
+.img-txt-scrool li p{padding:0 6px;color:#999999;font-size:12px;}
+.img-txt-scrool li h3 a:link,.img-txt-scrool li h3 a:visited{color:#F50C43;text-decoration:none}
+.img-txt-scrool li h3 a:hover{color:#F50C43;text-decoration:none}
+.img-txt-scrool li p a:link,.img-txt-scrool li p a:visited{color:#999999;text-decoration:none}
+.img-txt-scrool li p a:hover{color:#999999;text-decoration:none}
+/* img-txt-fade */
+.img-txt-fade li{width:250px;height:188px;border:1px solid #E9CDF3;overflow:hidden;float:left;margin:10px 10px 0 0;display:inline;position:relative;background:#333333;}
+.img-txt-fade li .imgBox{position:absolute;z-index:10}
+.img-txt-fade li .txtBox{position:absolute;top:0;left:0;}
+.img-txt-fade li h3{font-size:12px;line-height:18px;padding:0 6px}
+.img-txt-fade li p{padding:0 6px;color:#999999;font-size:12px;}
+.img-txt-fade li h3 a:link,.img-txt-fade li h3 a:visited{color:#F50C43;text-decoration:none}
+.img-txt-fade li h3 a:hover{color:#F50C43;text-decoration:none}
+.img-txt-fade li p a:link,.img-txt-fade li p a:visited{color:#999999;text-decoration:none}
+.img-txt-fade li p a:hover{color:#999999;text-decoration:none}

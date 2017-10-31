@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery首页产品分类手风琴代码 - 站长素材</title>
+    <link type="text/css" rel="stylesheet" href="css/base.css" />
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link href="../../../CSS/share_style_pc.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+    <div class="indexTypes ser_tile_main tile_bg">
+        <ul>
+            <li class="current">
+                <div class="title ser_col ser_col_1">
+                  <p>社区平台</p>
+                    <img src="../../../Images/ser_icon2.png" />
+               
+                </div>
+                <div class="con fl ser_data ser_data_1" id="con11">
+                    <p>
+                        接入部门：<span class="num">3</span>家
+                    </p>
+                    <p>
+                        接入业务：<span class="num">6</span>件
+                    </p>
+                    <p>
+                        办理业务：<span class="num">338</span>次
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="title ser_col ser_col_1">
+                 <p>社区平台</p>
+                    <img src="../../../Images/ser_icon2.png" />
+                </div>
+                <div class="con fl ser_data ser_data_1" id="con22">
+                 <p>
+                        接入部门：<span class="num">3</span>家
+                    </p>
+                    <p>
+                        接入业务：<span class="num">6</span>件
+                    </p>
+                    <p>
+                        办理业务：<span class="num">338</span>次
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="title ser_col ser_col_1">
+                 <p>社区平台</p>
+                    <img src="../../../Images/ser_icon2.png" />
+                </div>
+                <div class="con fl ser_data ser_data_1" id="Div1">
+                 <p>
+                        接入部门：<span class="num">3</span>家
+                    </p>
+                    <p>
+                        接入业务：<span class="num">6</span>件
+                    </p>
+                    <p>
+                        办理业务：<span class="num">338</span>次
+                    </p>
+                </div>
+            </li>
+             <li>
+                <div class="title ser_col ser_col_1">
+                 <p>社区平台</p>
+                    <img src="../../../Images/ser_icon2.png" />
+                </div>
+                <div class="con fl ser_data ser_data_1" id="Div2">
+                 <p>
+                        接入部门：<span class="num">3</span>家
+                    </p>
+                    <p>
+                        接入业务：<span class="num">6</span>件
+                    </p>
+                    <p>
+                        办理业务：<span class="num">338</span>次
+                    </p>
+                </div>
+            </li>
+       
+           
+            <div class="clear">
+            </div>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+
+            var currentLi = $(".indexTypes ul li");
+            $(currentLi.eq(0)).stop().animate({ "width": "450px" }, 600);
+            $(currentLi.eq(0)).children(".con").animate({ "left": "200px" }, 600);
+
+            $(currentLi).hover(function (e) {
+                $(this).siblings("li").stop().animate({ "width": "200px" }, 600);
+                $(this).siblings("li").removeClass("current");
+                $(this).addClass("current");
+                $(this).stop().animate({ "width": "450px" }, 600);
+            });
+
+        });
+    </script>
+    <div style="text-align: center; margin: 50px 0; font: normal 14px/24px 'MicroSoft YaHei';">
+        <p>
+            适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+        <p>
+            来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+    </div>
+</body>
+</html>

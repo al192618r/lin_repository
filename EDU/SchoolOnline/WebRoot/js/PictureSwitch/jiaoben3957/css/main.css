@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+body{font-family:"宋体";color:#333;background-color:#B6C6CF; width:100%;/*box-sizing: border-box;overflow:visible!important;*/}
+/*首页主题内容*/
+/*.indexTypes{width:1002px;margin:10px auto;/*border:1px solid #f00;*/
+.indexTypes ul li{position:relative;float:left;width:180px;overflow:hidden;overflow:hidden;}
+.indexTypes ul li:hover{cursor:pointer;}
+/*.indexTypes ul li.currnet{width:445px;}
+/*.indexTypes ul li .title{width:143px;padding-top:30px;padding-left:50px;;font-size:18px;color: #fff;font-family:"微软雅黑"; float:left;}*/
+/*.indexTypes ul li .title a{color:#fff;}
+.indexTypes ul li .title h2{font-size:20px;font-weight:bold;padding-bottom:5px;}*/
+.indexTypes ul li.current .title{ left top;}
+.indexTypes ul li .con{position:absolute;top:0;  left:180px;overflow:hidden;overflow:hidden; }
+
+/*.indexTypes ul li .con ul{padding-top:12px;}*/
+.indexTypes ul li .con ul li{float:none;height:auto;width:auto;}
+/*.indexTypes ul li .con ul li a{line-height:28px;width:180px;display:block;text-indent:3em;background:url(../images/typesLi.jpg) no-repeat 6px 7px;border-bottom:1px dashed #d1d1d1;}
+.indexTypes ul li .con ul li a:hover{color:#F87C02;}*/
